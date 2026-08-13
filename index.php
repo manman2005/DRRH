@@ -24,7 +24,8 @@ $result = mysqli_query($conn, $sql);
 <h1>จัดการข้อมูลห้อง</h1>
 
 <a href="frm_add_room.php">+ เพิ่มข้อมูลห้อง</a>
-
+<a href="frm_add_floor.php">+ เพิ่มข้อมูลชั้น</a>
+<a href="frm_add_room_type.php">+ เพิ่มข้อมูลประเภทห้อง</a>
 <br><br>
 
 <table border="1" cellpadding="10" cellspacing="0">
