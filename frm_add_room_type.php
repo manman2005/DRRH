@@ -23,11 +23,17 @@
         name="room_type_name"
         required
     >
-    <input
-        type="text"
-        name="room_type_status"
-        required
-    >
+    <select name="room_type_status">
+
+        <option value="1">
+            พร้อมใช้งาน
+        </option>
+
+        <option value="0">
+            ไม่พร้อมใช้งาน
+        </option>
+
+    </select>
     <br><br>
 
     <button type="submit">

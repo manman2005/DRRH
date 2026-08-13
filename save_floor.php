@@ -6,12 +6,12 @@ $floor_name = $_POST["floor_name"];
 
 $sql = "INSERT INTO tb_floors   
 (  
-    floor_name,
+    floor_name
 )
 
 VALUES
 (
-    '$floor_name',
+    '$floor_name'
 )";
 
 mysqli_query($conn, $sql);
