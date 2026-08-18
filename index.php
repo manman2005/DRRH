@@ -2,7 +2,11 @@
 
 include "config/connectDB.php";
 
-$sql = "SELECT * FROM tb_roomdata ORDER BY room_id DESC";
+$sql = "SELECT tb_roomdata.*, tb_floors.floor_name, tb_room_types.room_type_name 
+        FROM tb_roomdata
+        LEFT JOIN tb_floors ON tb_roomdata.floor_id = tb_floors.floor_id
+        LEFT JOIN tb_room_types ON tb_roomdata.room_type_id = tb_room_types.room_type_id
+        ORDER BY tb_roomdata.room_id DESC";
 
 $result = mysqli_query($conn, $sql);
 
@@ -63,7 +67,7 @@ $result = mysqli_query($conn, $sql);
             </td>
 
             <td>
-                <?= $row["floor_id"] ?>
+                <?= $row["floor_name"] ?>
             </td>
 
             <td>
@@ -71,21 +75,7 @@ $result = mysqli_query($conn, $sql);
             </td>
 
             <td>
-
-                <?php
-
-                if ($row["room_type_id"] == 1) {
-                    echo "ห้องเรียน";
-                } elseif ($row["room_type_id"] == 2) {
-                    echo "ห้องปฏิบัติการ";
-                } elseif ($row["room_type_id"] == 3) {
-                    echo "ห้องประชุม";
-                } elseif ($row["room_type_id"] == 4) {
-                    echo "ห้องอบรม";
-                }
-
-                ?>
-
+                <?= $row["room_type_name"] ?>
             </td>
 
             <td>

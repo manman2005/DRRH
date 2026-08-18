@@ -34,7 +34,7 @@ VALUES
 
 mysqli_query($conn, $sql);
 
-header("Location: frm_add_room.php");
+header("Location: index.php");
 
 exit;
 

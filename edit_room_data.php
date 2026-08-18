@@ -11,6 +11,10 @@ $result = mysqli_query($conn, $sql);
 
 $row = mysqli_fetch_assoc($result);
 
+$sqlroomtype = "SELECT * FROM tb_room_types ORDER BY room_type_id DESC";
+$resultroomtype = mysqli_query($conn, $sqlroomtype);
+$sqlflo = "SELECT * FROM tb_floors ORDER BY floor_id";
+$resultflo = mysqli_query($conn, $sqlflo);
 ?>
 
 <!DOCTYPE html>
@@ -72,13 +76,13 @@ $row = mysqli_fetch_assoc($result);
     ชั้น
     <br>
 
-     <select name="floor_id">
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <option value="<?= $row['floor_id'] ?>">
-                    <?= $row['floor_name'] ?>
+    <select name="floor_id">
+            <?php while ($rowflo = mysqli_fetch_assoc($resultflo)) { ?>
+                <option value="<?= $rowflo['floor_id'] ?>" <?= ($row['floor_id'] == $rowflo['floor_id']) ? "selected" : "" ?>>
+                    <?= $rowflo['floor_name'] ?>
                 </option>
             <?php } ?>
-        </select>
+    </select>
 
     <br><br>
 
@@ -97,12 +101,12 @@ $row = mysqli_fetch_assoc($result);
     <br>
 
     <select name="room_type_id">
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <option value="<?= $row['room_type_id'] ?>">
-                    <?= $row['room_type_name'] ?>
+            <?php while ($rowroomtype = mysqli_fetch_assoc($resultroomtype)) { ?>
+                <option value="<?= $rowroomtype['room_type_id'] ?>" <?= ($row['room_type_id'] == $rowroomtype['room_type_id']) ? "selected" : "" ?>>
+                    <?= $rowroomtype['room_type_name'] ?>
                 </option>
             <?php } ?>
-        </select>
+    </select>
 
     <br><br>
 
