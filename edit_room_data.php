@@ -32,7 +32,7 @@ $resultflo = mysqli_query($conn, $sqlflo);
 
 <h1>แก้ไขข้อมูลห้อง</h1>
 
-<form action="save_room_data.php" method="post">
+<form action="update_room_data.php" method="post">
 
     <input
         type="hidden"
