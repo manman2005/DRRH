@@ -9,7 +9,7 @@ $sql = "DELETE FROM tb_roomdata
 
 mysqli_query($conn, $sql);
 
-header("Location: index.php");
+header("Location: frm_add_room.php");
 
 exit;
 

@@ -72,29 +72,13 @@ $row = mysqli_fetch_assoc($result);
     ชั้น
     <br>
 
-    <select name="floor_id">
-
-        <option value="1"
-            <?= $row["floor_id"] == 1 ? "selected" : "" ?>>
-            ชั้น 1
-        </option>
-
-        <option value="2"
-            <?= $row["floor_id"] == 2 ? "selected" : "" ?>>
-            ชั้น 2
-        </option>
-
-        <option value="3"
-            <?= $row["floor_id"] == 3 ? "selected" : "" ?>>
-            ชั้น 3
-        </option>
-
-        <option value="4"
-            <?= $row["floor_id"] == 4 ? "selected" : "" ?>>
-            ชั้น 4
-        </option>
-
-    </select>
+     <select name="floor_id">
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <option value="<?= $row['floor_id'] ?>">
+                    <?= $row['floor_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
 
     <br><br>
 
@@ -113,46 +97,25 @@ $row = mysqli_fetch_assoc($result);
     <br>
 
     <select name="room_type_id">
-
-        <option value="1"
-            <?= $row["room_type_id"] == 1 ? "selected" : "" ?>>
-            ห้องเรียน
-        </option>
-
-        <option value="2"
-            <?= $row["room_type_id"] == 2 ? "selected" : "" ?>>
-            ห้องปฏิบัติการ
-        </option>
-
-        <option value="3"
-            <?= $row["room_type_id"] == 3 ? "selected" : "" ?>>
-            ห้องประชุม
-        </option>
-
-        <option value="4"
-            <?= $row["room_type_id"] == 4 ? "selected" : "" ?>>
-            ห้องอบรม
-        </option>
-
-    </select>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <option value="<?= $row['room_type_id'] ?>">
+                    <?= $row['room_type_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
 
     <br><br>
 
     สถานะ
     <br>
 
-    <select name="room_status">
-
-        <option value="1"
-            <?= $row["room_status"] == 1 ? "selected" : "" ?>>
+    <select name="room_type_status">
+        <option value="1" <?= (isset($row["room_type_status"]) && $row["room_type_status"] == 1) ? "selected" : "" ?>>
             พร้อมใช้งาน
         </option>
-
-        <option value="0"
-            <?= $row["room_status"] == 0 ? "selected" : "" ?>>
+        <option value="0" <?= (isset($row["room_type_status"]) && $row["room_type_status"] == 0) ? "selected" : "" ?>>
             ไม่พร้อมใช้งาน
         </option>
-
     </select>
 
     <br><br>

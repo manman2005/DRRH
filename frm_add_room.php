@@ -1,3 +1,10 @@
+<?php
+include "config/connectDB.php";
+$sqlroomtype = "SELECT * FROM tb_room_types ORDER BY room_type_id DESC";
+$result = mysqli_query($conn, $sqlroomtype);
+$sqlflo = "SELECT * FROM tb_floors ORDER BY floor_id";
+$resultflo = mysqli_query($conn, $sqlflo);
+?>
 <!DOCTYPE html>
 <html lang="th">
 
@@ -11,118 +18,90 @@
 
 <body>
 
-<h1>เพิ่มข้อมูลห้อง</h1>
+    <h1>เพิ่มข้อมูลห้อง</h1>
 
-<form action="save_room_data.php" method="post">
+    <form action="save_room_data.php" method="post">
 
-    หมายเลขห้อง
-    <br>
+        หมายเลขห้อง
+        <br>
 
-    <input
-        type="text"
-        name="room_number"
-        required
-    >
+        <input type="text" name="room_number" required>
 
-    <br><br>
+        <br><br>
 
-    ชื่อห้อง
-    <br>
+        ชื่อห้อง
+        <br>
 
-    <input
-        type="text"
-        name="room_name"
-        required
-    >
+        <input type="text" name="room_name" required>
 
-    <br><br>
+        <br><br>
 
-    รายละเอียดห้อง
-    <br>
+        รายละเอียดห้อง
+        <br>
 
-    <textarea
-        name="room_description"
-        rows="4"
-        cols="40"
-    ></textarea>
+        <textarea name="room_description" rows="4" cols="40"></textarea>
 
-    <br><br>
+        <br><br>
 
-    ชั้น
-    <br>
+        ชั้น
+        <br>
 
-    <select name="floor_id">
+        <select name="floor_id">
+            <?php while ($row = mysqli_fetch_assoc($resultflo)) { ?>
+                <option value="<?= $row['floor_id'] ?>">
+                    <?= $row['floor_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
 
-        <option value="1">ชั้น 1</option>
-        <option value="2">ชั้น 2</option>
-        <option value="3">ชั้น 3</option>
-        <option value="4">ชั้น 4</option>
+        <br><br>
 
-    </select>
+        จำนวนที่นั่ง
+        <br>
 
-    <br><br>
+        <input type="number" name="room_seats">
 
-    จำนวนที่นั่ง
-    <br>
+        <br><br>
 
-    <input
-        type="number"
-        name="room_seats"
-    >
+        ประเภทห้อง
+        <br>
 
-    <br><br>
+        <select name="room_type_id">
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <option value="<?= $row['room_type_id'] ?>">
+                    <?= $row['room_type_name'] ?>
+                </option>
+            <?php } ?>
+        </select>
 
-    ประเภทห้อง
-    <br>
+        <br><br>
 
-    <select name="room_type_id">
+        สถานะ
+        <br>
 
-        <option value="1">
-            ห้องเรียน
-        </option>
+        <select name="room_status">
 
-        <option value="2">
-            ห้องปฏิบัติการ
-        </option>
+            <option value="1">
+                พร้อมใช้งาน
+            </option>
 
-        <option value="3">
-            ห้องประชุม
-        </option>
+            <option value="0">
+                ไม่พร้อมใช้งาน
+            </option>
 
-        <option value="4">
-            ห้องอบรม
-        </option>
+        </select>
 
-    </select>
+        <br><br>
 
-    <br><br>
+        <button type="submit">
+            บันทึก
+        </button>
 
-    สถานะ
-    <br>
+        <a href="room_list.php">
+            ยกเลิก
+        </a>
 
-    <select name="room_status">
-
-        <option value="1">
-            พร้อมใช้งาน
-        </option>
-
-        <option value="0">
-            ไม่พร้อมใช้งาน
-        </option>
-
-    </select>
-
-    <br><br>
-
-    <button type="submit">
-        บันทึก
-    </button>
-
-    <a href="room_list.php">
-        ยกเลิก
-    </a>
-
-</form>
+    </form>
 
 </body>
 

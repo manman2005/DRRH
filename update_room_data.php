@@ -20,7 +20,6 @@ $sql = "UPDATE tb_roomdata SET
         room_seats = '$room_seats',
         room_type_id = '$room_type_id',
         room_status = '$room_status'
-
         WHERE room_id = $room_id";
 
 mysqli_query($conn, $sql);
