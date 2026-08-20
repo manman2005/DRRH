@@ -1,7 +1,6 @@
 <?php
 include "config/connectDB.php";
 
-// ดึงข้อมูลประเภทห้องเรียนทั้งหมดเพื่อนำมาแสดงในตารางด้านล่าง
 $sql = "SELECT * FROM tb_room_types ORDER BY room_type_id ASC";
 $result = mysqli_query($conn, $sql);
 ?>

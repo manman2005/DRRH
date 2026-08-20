@@ -113,11 +113,11 @@ $resultflo = mysqli_query($conn, $sqlflo);
     สถานะ
     <br>
 
-    <select name="room_type_status">
-        <option value="1" <?= (isset($row["room_type_status"]) && $row["room_type_status"] == 1) ? "selected" : "" ?>>
+    <select name="room_status">
+        <option value="1" <?= (isset($row["room_status"]) && $row["room_status"] == 1) ? "selected" : "" ?>>
             พร้อมใช้งาน
         </option>
-        <option value="0" <?= (isset($row["room_type_status"]) && $row["room_type_status"] == 0) ? "selected" : "" ?>>
+        <option value="0" <?= (isset($row["room_status"]) && $row["room_status"] == 0) ? "selected" : "" ?>>
             ไม่พร้อมใช้งาน
         </option>
     </select>
